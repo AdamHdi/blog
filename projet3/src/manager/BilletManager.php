@@ -2,7 +2,7 @@
 
 namespace App\src\manager;
 
-class Billet extends Manager
+class BilletManager extends Manager
 {
     public function getBillets()
     {

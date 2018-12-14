@@ -2,7 +2,7 @@
 
 namespace App\src\manager;
 
-class Comment extends Manager
+class CommentManager extends Manager
 {
     public function getCommentsFromBillet($id)
     {

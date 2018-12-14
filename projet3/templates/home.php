@@ -1,8 +1,3 @@
-<?php
-require '../src/manager/Manager.php';
-require '../src/manager/BilletManager.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,13 +10,11 @@ require '../src/manager/BilletManager.php';
         <h1>Mon blog</h1>
         <p>En construction</p>
         <?php
-        $billet = new \App\src\manager\Billet();
-        $billets = $billet->getBillets();
         while($data = $billets->fetch())
         {
         ?>
         	<div>
-        		<h2><a href="single.php?id=<?= htmlspecialchars($data['id']);?>"><?= htmlspecialchars($data['title']);?></a></h2>
+        		<h2><a href="../public/index.php?route=billet&id=<?= htmlspecialchars($data['id']);?>"><?= htmlspecialchars($data['title']);?></a></h2>
         		<p><?=htmlspecialchars($data['content']);?></p>
         		<p>Créé le : <?= htmlspecialchars($data['date_added']);?></p>
         	</div>

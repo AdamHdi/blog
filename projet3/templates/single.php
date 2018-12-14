@@ -1,9 +1,3 @@
-<?php
-require '../src/manager/Manager.php';
-require '../src/manager/BilletManager.php';
-require '../src/manager/CommentManager.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,41 +6,36 @@ require '../src/manager/CommentManager.php';
 </head>
 
 <body>
-    <div>
-        <h1>Mon blog</h1>
-        <p>En construction</p>
+<div>
+    <h1>Mon blog</h1>
+    <p>En construction</p>
+    <?php
+    $data = $billet->fetch()
+    ?>
+        <div>
+            <h2><?= htmlspecialchars($data['title']);?></h2>
+            <p><?= htmlspecialchars($data['content']);?></p>
+            <p>Créé le : <?= htmlspecialchars($data['date_added']);?></p>
+        </div>
+        <br>
+    <?php
+    $billet->closeCursor();
+    ?>
+    <a href="../public/index.php">Retour à la liste des billets</a>
+    <div id="comments" class="text-left" style="margin-left: 50px">
+        <h3>Commentaires</h3>
         <?php
-
-		$billet = new \App\src\manager\Billet();
-		$billet = $billet->getBillet($_GET['id']);
-		$data = $billet->fetch()
-		?>
-		    <div>
-		        <h2><?= htmlspecialchars($data['title']);?></h2>
-		        <p><?= htmlspecialchars($data['content']);?></p>
-		        <p>Créé le : <?= htmlspecialchars($data['date_added']);?></p>
-		    </div>
-		    <br>
-		<?php
-		$billet->closeCursor();
-		?>
-		<a href="home.php">Retour à la liste des billets</a>
-		<div id="comments" class="text-left" style="margin-left: 50px">
-	        <h3>Commentaires</h3>
-	        <?php
-	        $comment = new \App\src\manager\Comment();
-	        $comments = $comment->getCommentsFromBillet($_GET['id']);
-	        while($datas = $comments->fetch())
-	        {
-	            ?>
-	            <h4><?= htmlspecialchars($datas['pseudo']);?></h4>
-	            <p><?= htmlspecialchars($datas['content']);?></p>
-	            <p>Posté le <?= htmlspecialchars($datas['date_added']);?></p>
-	            <?php
-	        }
-	        $comments->closeCursor();
-	        ?>
-    	</div>
+        while($datas = $comments->fetch())
+        {
+            ?>
+            <h4><?= htmlspecialchars($datas['pseudo']);?></h4>
+            <p><?= htmlspecialchars($datas['content']);?></p>
+            <p>Posté le <?= htmlspecialchars($datas['date_added']);?></p>
+            <?php
+        }
+        $comments->closeCursor();
+        ?>
     </div>
+</div>
 </body>
 </html>
