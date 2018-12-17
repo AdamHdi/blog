@@ -10,17 +10,17 @@
         <h1>Mon blog</h1>
         <p>En construction</p>
         <?php
-        while($data = $billets->fetch())
+        foreach ($billets as $billet)
         {
         ?>
-        	<div>
-        		<h2><a href="../public/index.php?route=billet&id=<?= htmlspecialchars($data['id']);?>"><?= htmlspecialchars($data['title']);?></a></h2>
-        		<p><?=htmlspecialchars($data['content']);?></p>
-        		<p>Créé le : <?= htmlspecialchars($data['date_added']);?></p>
-        	</div>
+            <div>
+                <h2><a href="../public/index.php?route=billet&id=<?= htmlspecialchars($billet->getId());?>"><?= htmlspecialchars($billet->getTitle());?></a></h2>
+                <p><?= htmlspecialchars($billet->getContent());?></p>
+                <p>Créé le : <?= htmlspecialchars($billet->getDateAdded());?></p>
+            </div>
+            <br>
         <?php
         }
-        $billets->closeCursor();
         ?>
     </div>
 </body>

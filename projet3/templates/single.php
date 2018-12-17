@@ -9,31 +9,24 @@
 <div>
     <h1>Mon blog</h1>
     <p>En construction</p>
-    <?php
-    $data = $billet->fetch()
-    ?>
-        <div>
-            <h2><?= htmlspecialchars($data['title']);?></h2>
-            <p><?= htmlspecialchars($data['content']);?></p>
-            <p>Créé le : <?= htmlspecialchars($data['date_added']);?></p>
-        </div>
-        <br>
-    <?php
-    $billet->closeCursor();
-    ?>
+    <div>
+        <h2><?= htmlspecialchars($billet->getTitle());?></h2>
+        <p><?= htmlspecialchars($billet->getContent());?></p>
+        <p>Créé le : <?= htmlspecialchars($billet->getDateAdded());?></p>
+    </div>
+    <br>
     <a href="../public/index.php">Retour à la liste des billets</a>
     <div id="comments" class="text-left" style="margin-left: 50px">
         <h3>Commentaires</h3>
         <?php
-        while($datas = $comments->fetch())
+        foreach ($comments as $comment)
         {
             ?>
-            <h4><?= htmlspecialchars($datas['pseudo']);?></h4>
-            <p><?= htmlspecialchars($datas['content']);?></p>
-            <p>Posté le <?= htmlspecialchars($datas['date_added']);?></p>
+            <h4><?= htmlspecialchars($comment->getPseudo());?></h4>
+            <p><?= htmlspecialchars($comment->getContent());?></p>
+            <p>Posté le <?= htmlspecialchars($comment->getDateAdded());?></p>
             <?php
         }
-        $comments->closeCursor();
         ?>
     </div>
 </div>
