@@ -2,7 +2,6 @@
 $this->title = "Billet";
 ?>
 <h1>Mon blog</h1>
-<p>En construction</p>
 <div>
     <h2><?= htmlspecialchars($billet->getTitle());?></h2>
     <p><?= htmlspecialchars($billet->getContent());?></p>

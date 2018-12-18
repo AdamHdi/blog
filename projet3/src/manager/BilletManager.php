@@ -30,6 +30,14 @@ class BilletManager extends Manager
         }
     }
 
+    public function addBillet($billet)
+    {
+        //Permet de récupérer les variables $title, $content
+        extract($billet);
+        $sql = 'INSERT INTO billets (title, content, date_added) VALUES (?, ?, NOW())';
+        $this->sql($sql, [$title, $content]);
+    }
+
     private function buildObject(array $row)
     {
         $billet = new Billet();
