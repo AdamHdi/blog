@@ -9,7 +9,7 @@ $this->title = "Administration";
 	<?php
 	foreach ($billets as $billet)
 	{
-	  echo '<tr><td>', htmlspecialchars($billet->getTitle()), htmlspecialchars($billet->getDateAdded()), '</td><td><a href="?modifier=', htmlspecialchars($billet->getId()), '">Modifier</a> | <a href="?supprimer=', htmlspecialchars($billet->getId()), '">Supprimer</a></td></tr>', "\n";
+	  echo '<tr><td>', htmlspecialchars($billet->getTitle()), htmlspecialchars($billet->getDateAdded()), '</td><td><a href="?route=admin&modifier=', htmlspecialchars($billet->getId()), '">Modifier</a> | <a href="?route=admin&supprimer=', htmlspecialchars($billet->getId()), '">Supprimer</a></td></tr>', "\n";
 	}
 	?>
 </table>

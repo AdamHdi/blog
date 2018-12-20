@@ -30,6 +30,12 @@ class Router
                     if (isset($_GET['action']) && $_GET['action'] === 'ajout') {
                         $this->backController->addBillet($_POST);
                     }
+                    elseif (isset($_GET['supprimer'])) {
+                        $this->backController->deleteBillet($_GET['supprimer']);
+                    }
+                    elseif (isset($_GET['action']) && $_GET['action'] === 'modifier') {
+                        $this->backController->updateBillet($_GET['modifier']);
+                    }
                     else {
                     $this->backController->admin();
                     }

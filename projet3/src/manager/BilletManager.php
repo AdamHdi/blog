@@ -38,6 +38,12 @@ class BilletManager extends Manager
         $this->sql($sql, [$title, $content]);
     }
 
+    public function deleteBillet($id)
+    {
+        $sql = 'DELETE FROM billets WHERE id = ?';
+        $this->sql($sql, [$id]);
+    }
+
     private function buildObject(array $row)
     {
         $billet = new Billet();

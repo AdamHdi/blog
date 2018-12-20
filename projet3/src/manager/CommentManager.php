@@ -18,6 +18,12 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    public function deleteComments($id)
+    {
+    	$sql = 'DELETE FROM comment WHERE billet_id = ?';
+    	$this->sql($sql, [$id]);
+    }
+
     private function buildObject(array $row)
     {
         $comment = new Comment();
