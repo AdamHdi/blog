@@ -44,6 +44,13 @@ class BilletManager extends Manager
         $this->sql($sql, [$id]);
     }
 
+    public function updateBillet($id, $post)
+    {
+        extract($post);
+        $sql = 'UPDATE billets SET title = ?, content = ?, date_update = NOW() WHERE id = ?';
+        $this->sql($sql, [$title, $content, $id]);
+    }
+
     private function buildObject(array $row)
     {
         $billet = new Billet();

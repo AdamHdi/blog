@@ -11,6 +11,15 @@ $this->title = "Billet";
 <a href="../public/index.php">Retour à la liste des billets</a>
 <div id="comments" class="text-left" style="margin-left: 50px">
     <h3>Commentaires</h3>
+    <div>
+    <form method="post" action="../public/index.php?route=billet&id=<?php echo $_GET['id'] ?>">
+        <label for="pseudo">Pseudo</label><br>
+        <input type="text" id="pseudo" name="pseudo"><br>
+        <label for="content">Contenu</label><br>
+        <textarea id="content" name="content"></textarea><br>
+        <input type="submit" value="Envoyer" id="submit" name="submit">
+    </form>
+    </div>
     <?php
     foreach ($comments as $comment)
     {

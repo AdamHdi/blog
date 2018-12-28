@@ -24,6 +24,13 @@ class CommentManager extends Manager
     	$this->sql($sql, [$id]);
     }
 
+    public function addComment($comment, $id)
+    {
+    	extract($comment);
+    	$sql = 'INSERT INTO comment (pseudo, content, date_added, billet_id) VALUES (?, ?, NOW(), ?)';
+    	$this->sql($sql, [$pseudo, $content, $id]);
+    }
+
     private function buildObject(array $row)
     {
         $comment = new Comment();

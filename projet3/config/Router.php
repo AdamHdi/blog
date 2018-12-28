@@ -24,7 +24,7 @@ class Router
             if(isset($_GET['route']))
             {
                 if($_GET['route'] === 'billet'){
-                    $this->frontController->billet($_GET['id']);
+                    $this->frontController->billet($_GET['id'], $_POST);
                 }
                 elseif ($_GET['route'] === 'admin') {
                     if (isset($_GET['action']) && $_GET['action'] === 'ajout') {
@@ -33,8 +33,8 @@ class Router
                     elseif (isset($_GET['supprimer'])) {
                         $this->backController->deleteBillet($_GET['supprimer']);
                     }
-                    elseif (isset($_GET['action']) && $_GET['action'] === 'modifier') {
-                        $this->backController->updateBillet($_GET['modifier']);
+                    elseif (isset($_GET['modifier'])) {
+                        $this->backController->updateBillet($_GET['modifier'], $_POST);
                     }
                     else {
                     $this->backController->admin();

@@ -27,9 +27,12 @@ class FrontController
         ]);
     }
 
-    public function billet($id)
+    public function billet($id, $comment)
     {
         $billet = $this->billetManager->getBillet($id);
+        if(isset($comment['submit'])) {
+            $comments = $this->commentManager->addComment($comment, $id);
+        }
         $comments = $this->commentManager->getCommentsFromBillet($id);
         $this->view->render('single', [
             'billet' => $billet,
