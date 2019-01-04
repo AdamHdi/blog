@@ -39,4 +39,10 @@ class FrontController
             'comments' => $comments
         ]);
     }
+
+    public function reportComment($id)
+    {
+        $this->commentManager->reportComment($id);
+        //ajouter session pour confirmation
+    }
 }

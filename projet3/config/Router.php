@@ -25,10 +25,16 @@ class Router
             {
                 if($_GET['route'] === 'billet'){
                     $this->frontController->billet($_GET['id'], $_POST);
+                    if (isset($_GET['action']) && $_GET['action'] === 'report') {
+                        $this->frontController->reportComment($_GET['comment']);
+                    }
                 }
                 elseif ($_GET['route'] === 'admin') {
                     if (isset($_GET['action']) && $_GET['action'] === 'ajout') {
                         $this->backController->addBillet($_POST);
+                    }
+                    elseif (isset($_GET['action']) && $_GET['action'] === 'report') {
+                        $this->backController->getCommentReported();
                     }
                     elseif (isset($_GET['supprimer'])) {
                         $this->backController->deleteBillet($_GET['supprimer']);

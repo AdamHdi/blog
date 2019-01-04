@@ -27,6 +27,7 @@ $this->title = "Billet";
         <h4><?= htmlspecialchars($comment->getPseudo());?></h4>
         <p><?= htmlspecialchars($comment->getContent());?></p>
         <p>Posté le <?= htmlspecialchars($comment->getDateAdded());?></p>
+        <a href="../public/index.php?route=billet&id=<?= htmlspecialchars($_GET['id']);?>&action=report&comment=<?= htmlspecialchars($comment->getId());?>">Signaler ce commentaire</a>
         <?php
     }
     ?>

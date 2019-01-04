@@ -62,4 +62,12 @@ class BackController
             'billet' => $billet
         ]);
     }
+
+    public function getCommentReported()
+    {
+    	$comment_reported = $this->commentManager->getCommentReported();
+    	$this->view->render('comment_reported', [
+            'comment_reported' => $comment_reported
+        ]);
+    }
 }

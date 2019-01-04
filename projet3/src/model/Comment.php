@@ -12,6 +12,10 @@ class Comment
     
     private $dateAdded;
 
+    private $billetId;
+
+    private $commentReported;
+
     /**
      * @return mixed
      */
@@ -74,5 +78,37 @@ class Comment
     public function setDateAdded($dateAdded)
     {
         $this->dateAdded = $dateAdded;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBilletId()
+    {
+        return $this->billetId;
+    }
+
+    /**
+     * @param mixed $billetId
+     */
+    public function setBilletId($billetId)
+    {
+        $this->billetId = $billetId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentReported()
+    {
+        return $this->commentReported;
+    }
+
+    /**
+     * @param mixed $commentReported
+     */
+    public function setCommentReported($commentReported)
+    {
+        $this->commentReported = $commentReported;
     }
 }
