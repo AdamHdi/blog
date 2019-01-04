@@ -70,4 +70,18 @@ class BackController
             'comment_reported' => $comment_reported
         ]);
     }
+
+    public function deleteReportedComment($id)
+    {
+    	$this->commentManager->deleteReportedComment($id);
+    	$_SESSION['delete_comment'] = 'Le commentaire a bien été supprimé';
+    	header('Location: ../public/index.php?route=admin&action=report');
+    }
+
+    public function ignoreReportedComment($id)
+    {
+    	$this->commentManager->ignoreReportedComment($id);
+    	$_SESSION['ignore_comment'] = 'Le commentaire a bien été ignoré';
+    	header('Location: ../public/index.php?route=admin&action=report');
+    }
 }

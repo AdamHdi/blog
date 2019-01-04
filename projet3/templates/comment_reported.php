@@ -1,6 +1,7 @@
 <?php
 $this->title = "Modération";
 ?>
+<h1>Liste des commentaires signalés</h1>
 <div>
 	<?php
 	foreach ($comment_reported as $comment)
@@ -10,6 +11,8 @@ $this->title = "Modération";
 	    <p><?= htmlspecialchars($comment->getContent());?></p>
 	    <p>Posté le <?= htmlspecialchars($comment->getDateAdded());?></p>
 	    <p><?= htmlspecialchars($comment->getBilletId());?></p>
+	    <a href="../public/index.php?route=admin&action=report&supprimer=<?=htmlspecialchars($comment->getId());?>">Supprimer</a>
+	    <a href="../public/index.php?route=admin&action=report&ignore=<?=htmlspecialchars($comment->getId());?>">Ignorer</a>
 	<?php
 	}
 	?>

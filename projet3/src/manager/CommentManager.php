@@ -42,6 +42,18 @@ class CommentManager extends Manager
     	$this->sql($sql, [$id]);
     }
 
+    public function deleteReportedComment($id)
+    {
+    	$sql = 'DELETE FROM comment WHERE id = ?';
+    	$this->sql($sql, [$id]);
+    }
+
+    public function ignoreReportedComment($id)
+    {
+    	$sql = 'UPDATE comment SET comment_reported = ? WHERE id = ?';
+    	$this->sql($sql, [0, $id]);
+    }
+
     public function addComment($comment, $id)
     {
     	extract($comment);
