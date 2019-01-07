@@ -4,19 +4,43 @@ namespace App\src\controller;
 
 use App\src\manager\BilletManager;
 use App\src\manager\CommentManager;
+use App\src\manager\UserManager;
 use App\src\model\View;
 
 class BackController
 {
 	private $billetManager;
 	private $commentManager;
+	private $userManager;
 	private $view;
 
 	public function __construct()
     {
         $this->billetManager = new BilletManager();
         $this->commentManager = new CommentManager();
+        $this->userManager = new UserManager();
         $this->view = new View();
+    }
+
+    public function formulaireConnexion()
+    {
+    	$this->view->render('connexion');
+    }
+
+    public function connexion($post)
+    {
+    	extract($post);
+    	$user = $this->userManager->getUserInfos();
+    	$data = $user->fetch();
+        if ((isset($password) AND $password == $data['password']) AND (isset($email) AND $email == $data['email'])) {
+            return $this->admin();
+        }
+        else
+        {
+            session_start();
+            $_SESSION['message'] = 'Mot de passe incorect';
+            header('Location: ../public/index.php?route=admin');
+        }
     }
 
     public function admin()

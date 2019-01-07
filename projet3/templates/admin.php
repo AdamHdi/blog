@@ -13,5 +13,7 @@ $this->title = "Administration";
 	}
 	?>
 </table>
+<br>
 <a href="../public/index.php?route=admin&action=ajout">Ajouter un billet</a>
+<br>
 <a href="../public/index.php?route=admin&action=report">Modération des commentaires</a>

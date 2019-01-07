@@ -7,7 +7,7 @@ $this->title = "Modération";
 	foreach ($comment_reported as $comment)
 	{
 	?>
-		<p><?= htmlspecialchars($comment->getPseudo());?></p>
+		<p><strong><?= htmlspecialchars($comment->getPseudo());?></strong></p>
 	    <p><?= htmlspecialchars($comment->getContent());?></p>
 	    <p>Posté le <?= htmlspecialchars($comment->getDateAdded());?></p>
 	    <p><?= htmlspecialchars($comment->getBilletId());?></p>

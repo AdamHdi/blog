@@ -48,8 +48,11 @@ class Router
                     elseif (isset($_GET['modifier'])) {
                         $this->backController->updateBillet($_GET['modifier'], $_POST);
                     }
+                    elseif (isset($_GET['action']) && $_GET['action'] === 'connexion') {
+                        $this->backController->connexion($_POST);
+                    }
                     else {
-                    $this->backController->admin();
+                    $this->backController->formulaireConnexion();
                     }
                 }
                 else{
