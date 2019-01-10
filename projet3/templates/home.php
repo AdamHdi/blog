@@ -2,7 +2,6 @@
 session_start();
 $this->title = "Accueil";
 ?>
-<a href="../public/index.php?route=admin">Accéder à l'espace d'administration</a>
 <h1>Mon blog</h1>
 <?php
 if(isset($_SESSION['add_billet'])) {
@@ -25,3 +24,6 @@ foreach ($billets as $billet)
 <?php
 var_dump($_COOKIE['password']);
 ?>
+<footer>
+	<a href="../public/index.php?route=admin">Accéder à l'espace d'administration</a>
+</footer>

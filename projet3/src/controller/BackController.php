@@ -52,7 +52,6 @@ class BackController
 
     public function deconnexion()
     {
-    	die();
     	session_destroy();
     	setcookie('password', '', -1, '/');
         setcookie('email', '', -1, '/');
@@ -63,8 +62,16 @@ class BackController
 
     public function admin()
     {
-    	$billets = $this->billetManager->getBillets();
+    	$billets = $this->billetManager->getLastBillets();
         $this->view->render('admin', [
+            'billets' => $billets
+        ]);
+    }
+
+    public function getBillets()
+    {
+    	$billets = $this->billetManager->getBillets();
+        $this->view->render('liste', [
             'billets' => $billets
         ]);
     }

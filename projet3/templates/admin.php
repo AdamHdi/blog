@@ -5,8 +5,9 @@ $this->title = "Administration";
 <br>
 <a href="../public/index.php">Retour à la page d'accueil</a>
 <h1>Ceci est la page d'administration</h1>
+<h2>Liste des 5 derniers épisodes</h2>
 
-<table>
+<table class="table">
     <tr><th>Titre</th><th>Date d'ajout</th><th>Action</th></tr>
 	<?php
 	foreach ($billets as $billet)
@@ -15,6 +16,8 @@ $this->title = "Administration";
 	}
 	?>
 </table>
+<br>
+<a href="../public/index.php?route=admin&action=liste">Liste de tous les épisodes</a>
 <br>
 <a href="../public/index.php?route=admin&action=ajout">Ajouter un billet</a>
 <br>

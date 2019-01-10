@@ -9,7 +9,7 @@ $this->title = "Billet";
 </div>
 <br>
 <a href="../public/index.php">Retour à la liste des billets</a>
-<div id="comments" class="text-left" style="margin-left: 50px">
+<div id="comments" class="text-left">
     <h3>Commentaires</h3>
     <div>
     <form method="post" action="../public/index.php?route=billet&id=<?php echo $_GET['id'] ?>">
@@ -32,3 +32,6 @@ $this->title = "Billet";
     }
     ?>
 </div>
+<footer>
+    <a href="../public/index.php?route=admin">Accéder à l'espace d'administration</a>
+</footer>

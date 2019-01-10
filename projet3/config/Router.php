@@ -45,6 +45,9 @@ class Router
                             $this->backController->ignoreReportedComment($_GET['ignore']);
                         }
                     }
+                    elseif (isset($_GET['action']) && $_GET['action'] === 'liste') {
+                        $this->backController->getBillets();
+                    }
                     elseif (isset($_GET['supprimer'])) {
                         $this->backController->deleteBillet($_GET['supprimer']);
                     }
