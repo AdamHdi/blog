@@ -4,7 +4,7 @@ $this->title = "Billet";
 <h1>Mon blog</h1>
 <div>
     <h2><?= htmlspecialchars($billet->getTitle());?></h2>
-    <p><?= htmlspecialchars($billet->getContent());?></p>
+    <p><?= $billet->getContent();?></p>
     <p>Créé le : <?= htmlspecialchars($billet->getDateAdded());?></p>
 </div>
 <br>

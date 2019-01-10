@@ -9,7 +9,7 @@ $this->title = "Modifier un billet";
                 echo $billet->getTitle();}
         ?>"><br>
         <label for="content">Contenu</label><br>
-        <textarea id="content" name="content"> <?php if(isset($billet)){ echo $billet->getContent(); } ?> </textarea><br>
+        <textarea id="mytextarea" name="content"> <?php if(isset($billet)){ echo $billet->getContent(); } ?> </textarea><br>
         <input type="submit" value="Envoyer" id="modifier" name="modifier">
     </form>
     <a href="../public/index.php?route=admin">Retour</a>

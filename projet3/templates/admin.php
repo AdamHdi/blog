@@ -1,6 +1,8 @@
 <?php
 $this->title = "Administration";
 ?>
+<a href="../public/index.php?deconnexion=1">Déconnexion</a>
+<br>
 <a href="../public/index.php">Retour à la page d'accueil</a>
 <h1>Ceci est la page d'administration</h1>
 
@@ -9,7 +11,7 @@ $this->title = "Administration";
 	<?php
 	foreach ($billets as $billet)
 	{
-	  echo '<tr><td>', htmlspecialchars($billet->getTitle()), htmlspecialchars($billet->getDateAdded()), '</td><td><a href="?route=admin&modifier=', htmlspecialchars($billet->getId()), '">Modifier</a> | <a href="?route=admin&supprimer=', htmlspecialchars($billet->getId()), '">Supprimer</a></td></tr>', "\n";
+	  echo '<tr><td>', htmlspecialchars($billet->getTitle()),'</td><td>', htmlspecialchars($billet->getDateAdded()), '</td><td><a href="?route=admin&modifier=', htmlspecialchars($billet->getId()), '">Modifier</a> | <a href="?route=admin&supprimer=', htmlspecialchars($billet->getId()), '">Supprimer</a></td></tr>', "\n";
 	}
 	?>
 </table>

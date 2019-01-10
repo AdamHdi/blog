@@ -8,7 +8,7 @@ class BilletManager extends Manager
 {
     public function getBillets()
     {
-        $sql = 'SELECT id, title, content, date_added FROM billets ORDER BY id DESC';
+        $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets ORDER BY id DESC';
         $result = $this->sql($sql);
         $billets = [];
         foreach ($result as $row) {

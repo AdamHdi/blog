@@ -16,4 +16,4 @@ if (isset($_SESSION['message'])) {
     </form>
 </div>
 <br>
-<a href="../public/index.php">Retour à la liste des billets</a>
+<a href="../public/index.php">Retour à la liste des billets</a> 

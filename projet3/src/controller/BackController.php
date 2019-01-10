@@ -24,7 +24,12 @@ class BackController
 
     public function formulaireConnexion()
     {
-    	$this->view->render('connexion');
+    	if (isset($_COOKIE['password']) && isset($_COOKIE['email'])) {
+    		$this->admin();
+    	}
+    	else {
+    		$this->view->render('connexion');
+    	}
     }
 
     public function connexion($post)
@@ -32,15 +37,28 @@ class BackController
     	extract($post);
     	$user = $this->userManager->getUserInfos();
     	$data = $user->fetch();
-        if ((isset($password) AND $password == $data['password']) AND (isset($email) AND $email == $data['email'])) {
+        if ((isset($password) && $password == $data['password']) && (isset($email) && $email == $data['email'])) {
+        	setcookie('password', $password, time() + 365*24*3600, null, null, false, true);
+        	setcookie('email', $email, time() + 365*24*3600, null, null, false, true);
             return $this->admin();
         }
         else
         {
             session_start();
-            $_SESSION['message'] = 'Mot de passe incorect';
+            $_SESSION['message'] = 'Email ou mot de passe incorect';
             header('Location: ../public/index.php?route=admin');
         }
+    }
+
+    public function deconnexion()
+    {
+    	die();
+    	session_destroy();
+    	setcookie('password', '', -1, '/');
+        setcookie('email', '', -1, '/');
+        unset($_COOKIE['password']);
+        unset($_COOKIE['email']);
+        header('Location: ../public/index.php');
     }
 
     public function admin()
