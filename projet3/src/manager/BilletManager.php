@@ -32,7 +32,7 @@ class BilletManager extends Manager
 
     public function getBillet($id)
     {
-        $sql = 'SELECT id, title, content, date_added FROM billets WHERE id = ?';
+        $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets WHERE id = ?';
         $result = $this->sql($sql, [$id]);
         $row = $result->fetch();
         if($row) {

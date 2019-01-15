@@ -8,7 +8,7 @@ class CommentManager extends Manager
 {
     public function getCommentsFromBillet($id)
     {
-        $sql = 'SELECT id, pseudo, content, date_added FROM comment WHERE billet_id = ?';
+        $sql = 'SELECT id, pseudo, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM comment WHERE billet_id = ?';
         $result = $this->sql($sql, [$id]);
         $comments = [];
         foreach ($result as $row) {
@@ -20,7 +20,7 @@ class CommentManager extends Manager
 
     public function getCommentReported()
     {
-    	$sql = 'SELECT id, pseudo, content, date_added, billet_id FROM comment WHERE comment_reported = 1 ORDER BY id';
+    	$sql = 'SELECT id, pseudo, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added, billet_id FROM comment WHERE comment_reported = 1 ORDER BY id';
     	$result = $this->sql($sql);
     	$comments = [];
         foreach ($result as $row) {

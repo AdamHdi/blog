@@ -1,4 +1,4 @@
-<h1>Liste de tous les épisodes</h1>
+<h1 class="page">Liste de tous les épisodes</h1>
 <br>
 <table class="table">
     <tr><th>Titre</th><th>Date d'ajout</th><th>Action</th></tr>

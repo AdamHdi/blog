@@ -1,10 +1,22 @@
 <?php
 $this->title = "Administration";
 ?>
-<a href="../public/index.php?deconnexion=1">Déconnexion</a>
+<div class="row justify-content-between">
+	<a href="../public/index.php" id="retour" class="col-4">Retour à la page d'accueil</a>
+	<a href="../public/index.php?deconnexion=1" id="deconnexion" class="col-4">Déconnexion</a>
+</div>
+
+<header class="page-header">
+	<h1>Ceci est la page d'administration</h1>
+</header>
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="../public/index.php?route=admin&action=liste">Liste de tous les épisodes</a>
+  <a class="navbar-brand" href="../public/index.php?route=admin&action=ajout">Ajouter un billet</a>
+  <a class="navbar-brand" href="../public/index.php?route=admin&action=report">Modération des commentaires</a>
+</nav>
 <br>
-<a href="../public/index.php">Retour à la page d'accueil</a>
-<h1>Ceci est la page d'administration</h1>
+
 <h2>Liste des 5 derniers épisodes</h2>
 
 <table class="table">
@@ -16,9 +28,3 @@ $this->title = "Administration";
 	}
 	?>
 </table>
-<br>
-<a href="../public/index.php?route=admin&action=liste">Liste de tous les épisodes</a>
-<br>
-<a href="../public/index.php?route=admin&action=ajout">Ajouter un billet</a>
-<br>
-<a href="../public/index.php?route=admin&action=report">Modération des commentaires</a>
