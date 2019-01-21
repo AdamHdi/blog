@@ -14,4 +14,4 @@ $this->title = "Ajouter un billet";
         <input type="submit" value="Envoyer" id="submit" name="submit">
     </form>
 </div>
-<a href="../public/index.php?route=admin">Retour</a>
+<a href="../public/index.php?route=admin" class="text-dark text-center btn btn-light shadow-sm bg-white rounded">Retour</a>

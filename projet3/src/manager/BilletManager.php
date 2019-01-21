@@ -30,6 +30,18 @@ class BilletManager extends Manager
         return $billets;
     }
 
+    public function getThreeBillets()
+    {
+        $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets ORDER BY id LIMIT 0, 3';
+        $result = $this->sql($sql);
+        $billets = [];
+        foreach ($result as $row) {
+            $billetId = $row['id'];
+            $billets[$billetId] = $this->buildObject($row);
+        }
+        return $billets;
+    }
+
     public function getBillet($id)
     {
         $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets WHERE id = ?';

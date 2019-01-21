@@ -8,12 +8,9 @@ body {
 
 footer {
 	margin-top: 20px;
-	padding-bottom: 15px;
-	padding-top: 10px;
-	padding-left: 15px;
-	border-top: 0.75px solid grey;
-	text-decoration: none;
-	color: black;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	padding-left: 20px;
 	background-color: #BEBFBD;
 }
 
@@ -46,10 +43,6 @@ p {
 	margin-bottom: 30px;
 }
 
-.articles {
-	margin-bottom: 60px;
-}
-
 .retour {
 	margin-bottom: 20px;
 }
@@ -60,7 +53,7 @@ p {
 
 .page-header {
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 	border-bottom: 0.75px solid lightgrey;
 }
 
@@ -98,7 +91,7 @@ nav a:hover {
 }
 
 .ajout {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 .card {
@@ -116,4 +109,41 @@ nav a:hover {
 
 .action a {
 	margin-right: 10px;
+}
+
+.alert p {
+	margin-bottom: 0px;
+}
+
+.lire {
+	width: 200px;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  background-image: url("../../public/img/book.jpg");
+  height: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.titre {
+	padding-top: 90px;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 75px;
+	text-shadow: 2px 2px 4px #000000;
+}
+
+.slide {
+	background-color: grey;
+	height: 400px;
+}
+
+#myCarousel {
+	margin-bottom: 40px;
 }

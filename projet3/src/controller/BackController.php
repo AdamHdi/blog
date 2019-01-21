@@ -80,7 +80,7 @@ class BackController
         if(isset($post['submit'])) {
             $this->billetManager->addBillet($post);
             session_start();
-            $_SESSION['add_billet'] = 'Le nouveau billet a bien été ajouté';
+            $_SESSION['message'] = 'Le nouveau billet a bien été ajouté';
             header('Location: ../public/index.php');
         }
         $this->view->render('add_billet', [
@@ -93,7 +93,7 @@ class BackController
         $this->billetManager->deleteBillet($id);
         $this->commentManager->deleteComments($id);
         session_start();
-        $_SESSION['delete_billet'] = 'Le billet a bien été supprimé';
+        $_SESSION['message'] = 'Le billet a bien été supprimé';
         header('Location: ../public/index.php');
     }
 
@@ -103,7 +103,7 @@ class BackController
     	if(isset($post['modifier'])) {
             $this->billetManager->updateBillet($id, $post);
             session_start();
-            $_SESSION['update_billet'] = 'Le billet a bien été modifié';
+            $_SESSION['message'] = 'Le billet a bien été modifié';
             header('Location: ../public/index.php');
         }
         $this->view->render('update_billet', [
@@ -122,14 +122,14 @@ class BackController
     public function deleteReportedComment($id)
     {
     	$this->commentManager->deleteReportedComment($id);
-    	$_SESSION['delete_comment'] = 'Le commentaire a bien été supprimé';
+    	$_SESSION['message'] = 'Le commentaire a bien été supprimé';
     	header('Location: ../public/index.php?route=admin&action=report');
     }
 
     public function ignoreReportedComment($id)
     {
     	$this->commentManager->ignoreReportedComment($id);
-    	$_SESSION['ignore_comment'] = 'Le commentaire a bien été ignoré';
+    	$_SESSION['message'] = 'Le commentaire a bien été ignoré';
     	header('Location: ../public/index.php?route=admin&action=report');
     }
 }

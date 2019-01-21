@@ -22,8 +22,10 @@ class FrontController
     public function home()
     {
         $billets = $this->billetManager->getBillets();
+        $slides = $this->billetManager->getThreeBillets();
         $this->view->render('home', [
-            'billets' => $billets
+            'billets' => $billets,
+            'slides' => $slides
         ]);
     }
 

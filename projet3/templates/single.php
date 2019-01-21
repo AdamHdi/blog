@@ -5,12 +5,14 @@ $this->title = "Billet";
     <h1>Mon blog</h1>
 </header>
 <div>
-    <h2><?= htmlspecialchars($billet->getTitle());?></h2>
+    <br>
+    <h2 class="text-center"><?= htmlspecialchars($billet->getTitle());?></h2>
+    <br>
     <p><?= $billet->getContent();?></p>
     <p>Créé le : <?= htmlspecialchars($billet->getDateAdded());?></p>
 </div>
 <br>
-<a href="../public/index.php">Retour à la liste des billets</a>
+<a href="../public/index.php" class="text-dark btn btn-light shadow bg-white rounded">Retour à la liste des billets</a>
 <div id="comments">
     <h3>Commentaires</h3>
     <div>
@@ -34,7 +36,7 @@ $this->title = "Billet";
             <h4><?= htmlspecialchars($comment->getPseudo());?></h4>
             <p><?= htmlspecialchars($comment->getContent());?></p>
             <p>Posté le <?= htmlspecialchars($comment->getDateAdded());?></p>
-            <a href="../public/index.php?route=billet&id=<?= htmlspecialchars($_GET['id']);?>&action=report&comment=<?= htmlspecialchars($comment->getId());?>">Signaler ce commentaire</a>
+            <a href="../public/index.php?route=billet&id=<?= htmlspecialchars($_GET['id']);?>&action=report&comment=<?= htmlspecialchars($comment->getId());?>" class="text-primary btn btn-light shadow-sm bg-white rounded">Signaler</a>
         </div>
         <?php
     }
