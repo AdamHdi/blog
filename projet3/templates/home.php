@@ -8,7 +8,7 @@ $this->title = "Accueil";
 	<h1 class="text-center titre text-white">Mon blog</h1>
 </div>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1" class=""></li>
@@ -74,25 +74,3 @@ var_dump($_COOKIE['password']);
 </footer>
 
 <div>
-
-<!-- <?php /**
-		foreach ($slides as $slide)
-		{
-		?>
-        <div class="carousel-inner">
-          <div class="carousel-item">
-            <div class="slide">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h2><a href="../public/index.php?route=billet&id=<?= htmlspecialchars($slide->getId());?>"><?= htmlspecialchars($slide->getTitle());?></a></h2><br>
-                <p><?= substr($slide->getContent(), 0, 500);?></p>
-                <p>Créé le : <?= htmlspecialchars($slide->getDateAdded());?></p>
-                <p><a class="btn btn-lg btn-primary" href="../public/index.php?route=billet&id=<?= htmlspecialchars($slide->getId());?>" role="button">Commencer la lecture</a></p>
-              </div>
-            </div>
-            </div>
-          </div>
-      	</div> 
-<?php
-} **/
-?>

@@ -2,8 +2,8 @@
 $this->title = "Administration";
 ?>
 <div class="row justify-content-between">
-	<a href="../public/index.php" id="retour" class="col-3 text-dark btn btn-light shadow-sm bg-white rounded">Retour à la page d'accueil</a>
-	<a href="../public/index.php?deconnexion=1" id="deconnexion" class="col-2 text-dark text-center btn btn-light shadow-sm bg-white rounded">Déconnexion</a>
+	<a href="../public/index.php" id="retour" class="col-lg-3 col-md-3 text-dark btn btn-light shadow-sm bg-white rounded">Retour à la page d'accueil</a>
+	<a href="../public/index.php?deconnexion=1" id="deconnexion" class="col-lg-2 col-md-2 text-dark text-center btn btn-light shadow-sm bg-white rounded">Déconnexion</a>
 	
 </div>
 
@@ -30,7 +30,7 @@ $this->title = "Administration";
 	  			<td>', htmlspecialchars($billet->getDateAdded()), '</td>
 	  			<td class="text-center">
 	  				<a href="?route=admin&modifier=', htmlspecialchars($billet->getId()), '" class="text-primary btn btn-light shadow bg-white rounded">Modifier</a> 
-	  				<a href="?route=admin&supprimer=', htmlspecialchars($billet->getId()), '" class="text-primary btn btn-light shadow bg-white rounded">Supprimer</a>
+	  				<a href="?route=admin&supprimer=', htmlspecialchars($billet->getId()), '" class="text-primary btn btn-light shadow bg-white rounded delete">Supprimer</a>
 	  			</td>
 	  		</tr>', "\n";
 	}

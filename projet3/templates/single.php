@@ -17,7 +17,7 @@ $this->title = "Billet";
     <h3>Commentaires</h3>
     <div>
         <div class="form row justify-content-start">
-        <form method="post" action="../public/index.php?route=billet&id=<?php echo $_GET['id'] ?>" class="col-4">
+        <form method="post" action="../public/index.php?route=billet&id=<?php echo $_GET['id'] ?>" class="col-lg-4 col-md-6">
             <label for="pseudo"><strong>Pseudo</strong></label><br>
             <input type="text" id="pseudo" name="pseudo" class="form-control"><br>
             <label for="content"><strong>Contenu</strong></label><br>
