@@ -8,7 +8,7 @@ class CommentManager extends Manager
 {
     public function getCommentsFromBillet($id)
     {
-        $sql = 'SELECT id, pseudo, content, date_added FROM comment WHERE billet_id = ?';
+        $sql = 'SELECT id, pseudo, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM comment WHERE billet_id = ?';
         $result = $this->sql($sql, [$id]);
         $comments = [];
         foreach ($result as $row) {
@@ -18,10 +18,47 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    public function getCommentReported()
+    {
+    	$sql = 'SELECT id, pseudo, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added, billet_id FROM comment WHERE comment_reported = 1 ORDER BY id';
+    	$result = $this->sql($sql);
+    	$comments = [];
+        foreach ($result as $row) {
+            $commentId = $row['id'];
+            $comments[$commentId] = $this->buildAnotherObject($row);
+        }
+        return $comments;
+    }
+
+    public function reportComment($id)
+    {
+    	$sql = 'UPDATE comment SET comment_reported = ? WHERE id = ?';
+    	$this->sql($sql, [true, $id]);
+    }
+
     public function deleteComments($id)
     {
     	$sql = 'DELETE FROM comment WHERE billet_id = ?';
     	$this->sql($sql, [$id]);
+    }
+
+    public function deleteReportedComment($id)
+    {
+    	$sql = 'DELETE FROM comment WHERE id = ?';
+    	$this->sql($sql, [$id]);
+    }
+
+    public function ignoreReportedComment($id)
+    {
+    	$sql = 'UPDATE comment SET comment_reported = ? WHERE id = ?';
+    	$this->sql($sql, [0, $id]);
+    }
+
+    public function addComment($comment, $id)
+    {
+    	extract($comment);
+    	$sql = 'INSERT INTO comment (pseudo, content, date_added, billet_id) VALUES (?, ?, NOW(), ?)';
+    	$this->sql($sql, [$pseudo, $content, $id]);
     }
 
     private function buildObject(array $row)
@@ -31,6 +68,17 @@ class CommentManager extends Manager
         $comment->setPseudo($row['pseudo']);
         $comment->setContent($row['content']);
         $comment->setDateAdded($row['date_added']);
+        return $comment;
+    }
+
+    private function buildAnotherObject(array $row)
+    {
+    	$comment = new Comment();
+        $comment->setId($row['id']);
+        $comment->setPseudo($row['pseudo']);
+        $comment->setContent($row['content']);
+        $comment->setDateAdded($row['date_added']);
+        $comment->setBilletId($row['billet_id']);
         return $comment;
     }
 }

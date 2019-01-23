@@ -8,7 +8,31 @@ class BilletManager extends Manager
 {
     public function getBillets()
     {
-        $sql = 'SELECT id, title, content, date_added FROM billets ORDER BY id DESC';
+        $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets ORDER BY id DESC';
+        $result = $this->sql($sql);
+        $billets = [];
+        foreach ($result as $row) {
+            $billetId = $row['id'];
+            $billets[$billetId] = $this->buildObject($row);
+        }
+        return $billets;
+    }
+
+    public function getLastBillets()
+    {
+        $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets ORDER BY id DESC LIMIT 0, 5';
+        $result = $this->sql($sql);
+        $billets = [];
+        foreach ($result as $row) {
+            $billetId = $row['id'];
+            $billets[$billetId] = $this->buildObject($row);
+        }
+        return $billets;
+    }
+
+    public function getThreeBillets()
+    {
+        $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets ORDER BY id LIMIT 0, 3';
         $result = $this->sql($sql);
         $billets = [];
         foreach ($result as $row) {
@@ -20,7 +44,7 @@ class BilletManager extends Manager
 
     public function getBillet($id)
     {
-        $sql = 'SELECT id, title, content, date_added FROM billets WHERE id = ?';
+        $sql = 'SELECT id, title, content, DATE_FORMAT(date_added, "%d/%m/%Y") AS date_added FROM billets WHERE id = ?';
         $result = $this->sql($sql, [$id]);
         $row = $result->fetch();
         if($row) {
@@ -46,7 +70,6 @@ class BilletManager extends Manager
 
     public function updateBillet($id, $post)
     {
-        var_dump($post);
         extract($post);
         $sql = 'UPDATE billets SET title = ?, content = ?, date_update = NOW() WHERE id = ?';
         $this->sql($sql, [$title, $content, $id]);
