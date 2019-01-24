@@ -63,9 +63,6 @@ if(isset($_SESSION['message'])) {
 	<?php
 	}
 	?>
-	<?php
-var_dump($_COOKIE['password']);
-?>
 </section>
 
 </div>

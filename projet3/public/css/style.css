@@ -155,11 +155,21 @@ body, html {
 	}
 }
 
+.formbody {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	left: 0px;
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;
   padding: 15px;
-  margin: auto;
+  margin-bottom: 100px;
 }
 
 .form-signin .form-control {
@@ -187,4 +197,8 @@ body, html {
 
 .alert-danger {
 	margin-top: 30px;
+}
+
+.connect {
+	margin-bottom: 25px;
 }

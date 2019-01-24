@@ -21,10 +21,7 @@ class Router
     public function run()
     {
         try{
-            if (isset($_GET['deconnexion']) && $_GET['deconnexion'] === 1) {
-                $this->backController->deconnexion();
-            }
-            elseif(isset($_GET['route']))
+            if(isset($_GET['route']))
             {
                 if($_GET['route'] === 'billet'){
                     $this->frontController->billet($_GET['id'], $_POST);
@@ -56,6 +53,9 @@ class Router
                     }
                     elseif (isset($_GET['action']) && $_GET['action'] === 'connexion') {
                         $this->backController->connexion($_POST);
+                    }
+                    elseif (isset($_GET['action']) && $_GET['action'] === 'deconnexion') {
+                        $this->backController->deconnexion();
                     }
                     else {
                         $this->backController->formulaireConnexion();

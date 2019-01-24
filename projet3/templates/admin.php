@@ -3,8 +3,7 @@ $this->title = "Administration";
 ?>
 <div class="row justify-content-between">
 	<a href="../public/index.php" id="retour" class="col-lg-3 col-md-3 text-dark btn btn-light shadow-sm bg-white rounded">Retour à la page d'accueil</a>
-	<a href="../public/index.php?deconnexion=1" id="deconnexion" class="col-lg-2 col-md-2 text-dark text-center btn btn-light shadow-sm bg-white rounded">Déconnexion</a>
-	
+	<a href="../public/index.php?route=admin&action=deconnexion" id="deconnexion" class="col-lg-2 col-md-2 text-dark text-center btn btn-light shadow-sm bg-white rounded">Déconnexion</a>
 </div>
 
 <header class="page-header text-center mt-5">

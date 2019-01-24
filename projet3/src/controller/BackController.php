@@ -52,11 +52,11 @@ class BackController
 
     public function deconnexion()
     {
-    	session_destroy();
-    	setcookie('password', '', 1);
+    	setcookie('password','', time() - 3600,'/');
         setcookie('email', '', 1);
         unset($_COOKIE['password']);
         unset($_COOKIE['email']);
+        header('Location: ../public/index.php');
     }
 
     public function admin()
