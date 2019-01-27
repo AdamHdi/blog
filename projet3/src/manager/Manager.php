@@ -14,25 +14,19 @@ abstract class Manager
 
     private function checkConnection()
     {
-        //Vérifie si la connexion est nulle et fait appel à getConnection()
         if($this->connection === null) {
             return $this->getConnection();
         }
-        //Si la connexion existe, elle est renvoyée, inutile de refaire une connexion
         return $this->connection;
     }
 
-    //Méthode de connexion à notre base de données
     private function getConnection()
     {
-        //Tentative de connexion à la base de données
         try{
             $this->connection = new PDO(self::DB_HOST, self::DB_USER, self::DB_PASS);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //Renvoi de la connexion
             return $this->connection;
         }
-        //On lève une erreur si la connexion échoue
         catch(Exception $errorConnection)
         {
             die ('Erreur de connection :'.$errorConnection->getMessage());

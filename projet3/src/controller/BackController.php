@@ -37,16 +37,18 @@ class BackController
     	extract($post);
     	$user = $this->userManager->getUserInfos();
     	$data = $user->fetch();
-        if ((isset($password) && $password == $data['password']) && (isset($email) && $email == $data['email'])) {
-        	setcookie('password', $password, time() + 365*24*3600, null, null, false, true);
-        	setcookie('email', $email, time() + 365*24*3600, null, null, false, true);
-            return $this->admin();
-        }
-        else
-        {
-            session_start();
-            $_SESSION['message'] = 'Email ou mot de passe incorect';
-            header('Location: ../public/index.php?route=admin');
+        if (isset($password) && isset($email)) {
+            if (password_verify($password, $data['password']) && $email == $data['email']) {
+            	setcookie('password', $password, time() + 365*24*3600, null, null, false, true);
+            	setcookie('email', $email, time() + 365*24*3600, null, null, false, true);
+                return $this->admin();
+            }
+            else
+            {
+                session_start();
+                $_SESSION['message'] = 'Email ou mot de passe incorect';
+                header('Location: ../public/index.php?route=admin');
+            }
         }
     }
 
